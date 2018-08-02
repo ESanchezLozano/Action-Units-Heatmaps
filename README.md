@@ -10,6 +10,8 @@ This class takes an image and returns the heatmaps and the AU predictions from t
 
 An example of usage is included in the first release. Full scripts for folder and csv reading will follow soon.
 
+The Hourglass model has been kindly adapted from the FAN network. You can check [Adrian's](https://www.adrianbulat.com/) amazing code [here](https://github.com/1adrianb/face-alignment/)
+
 ## Requirements
 dlib --> pip install dlib [Link](https://pypi.org/project/dlib/)
 OpenCV --> pip install cv2 [Link](http://opencv-python-tutroals.readthedocs.io/en/latest/)
