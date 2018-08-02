@@ -14,13 +14,39 @@ The Hourglass model has been kindly adapted from the FAN network. You can check 
 
 ## Requirements
 dlib --> pip install dlib [Link](https://pypi.org/project/dlib/)
+
 OpenCV --> pip install cv2 [Link](http://opencv-python-tutroals.readthedocs.io/en/latest/)
+
 PyTorch --> follow the steps in [https://pytorch.org/](https://pytorch.org/)
 
 ```
 pip install dlib
 pip install cv2
 ```
+
+## Use
+To use the code you need to download the dlib facial landmark detector from [here](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2) and add it to your folder.
+
+This all you need to run the detector:
+
+```python 
+import AUmaps
+import glob
+import dlib
+AUdetector = AUmaps.AUdetector('../shape_predictor_68_face_landmarks.dat',enable_cuda=False)
+path_imgs = 'example_video'
+files = sorted(glob.glob(path_imgs + '/*.png'))
+win1 = dlib.image_window()
+win2 = dlib.image_window()
+for names in files:
+    print(names)
+    img = dlib.load_rgb_image(names)
+    pred,map,img = AUdetector.detectAU(img)
+    resized_map = dlib.resize_image(map[0,:,:].cpu().data.numpy(),rows=256,cols=256)
+    win1.set_image(img)
+    win2.set_image(resized_map)
+    dlib.hit_enter_to_continue()
+``` 
 
 ## Contributions
 
