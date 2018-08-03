@@ -64,7 +64,7 @@ All contributions are welcome
 @inproceedings{sanchez2018bmvc,
   title = {Joint Action Unit localisation and intensity estimation through heatmap regression},
   author = {Enrique Sánchez-Lozano and Georgios Tzimiropoulos and Michel Valstar},
-  booktitlte = {BMVC},
+  booktitle = {BMVC},
   year = 2018
 }
 ```
