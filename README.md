@@ -27,25 +27,31 @@ pip install cv2
 ## Use
 To use the code you need to download the dlib facial landmark detector from [here](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2) and add it to your folder.
 
-This all you need to run the detector:
+This all you need to run the detector (the visualisation in this script is really poor, I will work on improving it)
 
 ```python 
 import AUmaps
 import glob
 import dlib
+import matplotlib.pyplot as plt
 AUdetector = AUmaps.AUdetector('../shape_predictor_68_face_landmarks.dat',enable_cuda=False)
-path_imgs = 'example_video'
+path_imgs = '../example_video'
 files = sorted(glob.glob(path_imgs + '/*.png'))
-win1 = dlib.image_window()
-win2 = dlib.image_window()
+fig = plt.figure(figsize=plt.figaspect(.5))
 for names in files:
     print(names)
     img = dlib.load_rgb_image(names)
     pred,map,img = AUdetector.detectAU(img)
-    resized_map = dlib.resize_image(map[0,:,:].cpu().data.numpy(),rows=256,cols=256)
-    win1.set_image(img)
-    win2.set_image(resized_map)
-    dlib.hit_enter_to_continue()
+    for j in range(0,5):
+        resized_map = dlib.resize_image(map[j,:,:].cpu().data.numpy(),rows=256,cols=256)
+        ax = fig.add_subplot(5,2,2*j+1)
+        ax.imshow(img)
+        ax.axis('off')
+        ax = fig.add_subplot(5, 2, 2*j+2)
+        ax.imshow(resized_map)
+        ax.axis('off')
+    plt.pause(.1)
+    plt.draw()
 ``` 
 
 ## Contributions
