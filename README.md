@@ -34,8 +34,8 @@ import AUmaps
 import glob
 import dlib
 import matplotlib.pyplot as plt
-AUdetector = AUmaps.AUdetector('../shape_predictor_68_face_landmarks.dat',enable_cuda=False)
-path_imgs = '../example_video'
+AUdetector = AUmaps.AUdetector('shape_predictor_68_face_landmarks.dat',enable_cuda=False)
+path_imgs = 'example_video'
 files = sorted(glob.glob(path_imgs + '/*.png'))
 fig = plt.figure(figsize=plt.figaspect(.5))
 for names in files:
