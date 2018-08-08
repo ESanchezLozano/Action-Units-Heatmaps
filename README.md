@@ -19,6 +19,8 @@ OpenCV --> pip install cv2 [Link](http://opencv-python-tutroals.readthedocs.io/e
 
 PyTorch --> follow the steps in [https://pytorch.org/](https://pytorch.org/)
 
+It also requires scipy and matplotlib, and the Python version to be 3.X 
+
 ```
 pip install dlib
 pip install cv2
