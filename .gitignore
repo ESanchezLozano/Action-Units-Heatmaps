@@ -1,0 +1,4 @@
+shape_predictor_68_face_landmarks.dat.bz2
+shape_predictor_68_face_landmarks.dat
+__pycache__
+model/
