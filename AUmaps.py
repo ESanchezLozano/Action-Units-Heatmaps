@@ -26,7 +26,8 @@ class AUdetector:
                     "https://esanchezlozano.github.io/files/AUdetector.pth.tar",
                     'model/AUdetector.pth.tar')
 
-        net_weigths = torch.load('model/AUdetector.pth.tar')
+        #net_weigths = torch.load('model/AUdetector.pth.tar') # FIXED BUG IN CPU MODEL
+        net_weigths = torch.load('model/AUdetector.pth.tar', map_location=lambda storage, loc: storage)
         net_dict = {k.replace('module.',''): v for k, v in net_weigths['state_dict'].items()}
         
         self.AUdetector.load_state_dict(net_dict)
